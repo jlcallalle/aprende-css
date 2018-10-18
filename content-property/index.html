@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Content Property </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .name::before {
+            content: "Name: ";
+        }
+        .box {
+            counter-reset: section;               
+        }
+        p::before {
+            counter-increment: section;             
+            content: counter(section);  
+        }
+
+        [data-visual-label]:before {
+            content: attr(data-visual-label) ": ";
+        }
+
+        .email::before {
+            content: attr(data-done) " Email: "; /* This gets inserted before the email address */
+        }
+        .email::after {
+            content:"1";
+        }
+
+        .precio1::after {
+            content: " $" attr(data-price);
+        }
+        .precio2::after {
+            content: " $" attr(data-price);
+            content: " $" attr(data-sale-modifier);
+        }
+
+
+    </style>
+    
+</head>
+<body>
+    <h2>Propiedades de contenido</h2>
+    <div class="name">Chris</div>
+
+    <div class="box">
+        <p>Introduction</p>
+        <p>Body</p>
+        <p>Conclusion</p>
+    </div>
+
+    <div data-visual-label="Widget Rating">60</div>
+
+    <h2>Valid CSS Content</h2>
+
+    <div data-done="&#x2705;" class="email">
+        chriscoyier@gmail.com
+    </div>
+
+    <div class="precio1" data-price="4">Coffee</div>
+
+    <div class="precio2" data-price="4" data-sale-modifier="0.9">Coffee</div>
+
+    
+
+
+
+    
+
+</body>
+</html>

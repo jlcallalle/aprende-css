@@ -1,0 +1,1424 @@
+// Vars -------------------------
+// Blacks
+$D10: #162D3D
+$D20: #32536A
+$D30: #577083
+$D40: #7A92A5
+$D50: #B6C1CD
+$D55: #CBD3DC
+$D60: #DFE5EB 
+$D70: #F0F4F7 
+$D80: #FFFFFF
+
+// Blues
+$B05: #308DDD
+$B10: #3899EC
+$B20: #4EB7F5
+$B30: #C1E4FE
+$B40: #DAEFFE
+$B50: #EAF7FF
+
+// Premium 
+$P00: #8E21B1
+$P10: #AA4DC8
+$P20: #CD68ED
+$P30: #e5c9ee
+$P40: #eedbf4
+$P50: #FAEEFF
+
+// Other
+$uber: #F3F6F9
+
+// Fonts
+$H25: 'Helvetica25'
+$H35: 'Helvetica35'
+$H45: 'Helvetica45'
+$H55: 'Helvetica55'
+$H65: 'Helvetica65'
+$H75: 'Helvetica75'
+$H95: 'Helvetica95'
+
+// Layout
+$card0: 0 1px 2px 0 rgba(22,45,61,0)
+$card1: 0 1px 2px 0 rgba(22,45,61,0.10)
+$card2: 0 1px 0 0 rgba(0,0,0,0.05), 0 2px 6px 0 rgba(0,0,0,0.05), 0 10px 20px 0 rgba(0,0,0,0.05)
+
+
+// Responsive Mixin
+@mixin respond-to($point) 
+	@if $point == wide 
+		@media (min-width: 70em)
+			@content 
+	@else if $point == desktop 
+		@media (min-width: 64em)  
+			@content  
+  
+	@else if $point == tablet 
+		@media (min-width: 50em)  
+			@content  
+  
+	@else if $point == phablet 
+		@media (min-width: 0em)
+			@content  
+  
+	@else if $point == mobile 
+		@media (max-width: 37.5em)   
+			@content  
+  
+
+
+
+@include respond-to(breakpointname) 
+                    
+
+
+// Globals -------------------------
+html 
+	background: $uber
+	overflow-x: hidden
+* 
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	text-rendering: optimizeLegibility
+	box-sizing: border-box
+*, *:before, *:after 
+	box-sizing: border-box
+body 
+	display: flex
+	color: $D10
+	margin: 0
+	padding: 0 0 36px 0
+	align-items: center
+	flex-direction: column
+	font-family: 'Helvetica45' 
+	@include respond-to(mobile)
+		padding: 0 0 114px 0
+.ease 
+	-webkit-transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1)
+	transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1)
+.easeFast
+	-webkit-transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1)
+	transition: all 420ms cubic-bezier(0.19, 1, 0.22, 1)
+.easeFastest
+	-webkit-transition: all 260ms cubic-bezier(0.19, 1, 0.22, 1)
+	transition: all 260ms cubic-bezier(0.19, 1, 0.22, 1)
+	
+button
+			@extend .noselect
+			padding: 0 30px 
+			border-radius: 30em
+			height: 42px
+			background: $B10
+			color: $D80
+			font-family: $H55
+			font-size: 16px
+			border: 1px solid $B10
+			@extend .easeFastest
+			outline: none
+			&:hover
+				background: $B20
+				border: 1px solid $B20
+				cursor: pointer
+				color: $D80
+				@extend .easeFastest
+			&:active
+				background: $B05
+				border: 1px solid $B05
+
+a 
+	color: $B10
+	text-decoration: none
+	@extend .easeFastest
+	&:hover
+		color: $B20
+		@extend .easeFastest
+// Navigation
+
+nav 
+	background: $D80
+	// box-shadow: 0 2px 4px 0 rgba(16, 31, 43, 0.10)
+	border-bottom: 1px solid $D60
+	height: 48px
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	margin: 0
+	display: flex
+	z-index: 9999991
+	align-items: center
+	justify-content: space-between
+	padding: 0
+	
+	& p
+		& b
+			color: $P10
+			margin: 0 5px 0 0
+		& svg
+			margin: 0 0px 0 12px
+			
+		margin: 0
+		display: flex
+		align-items: center
+		font-size: 14px
+		font-family: $H55
+		color: $D10
+		word-spacing: 1px
+	
+.logo 
+	display: flex
+	flex-direction: row
+	width: 84px
+	justify-content: center
+	align-items: center
+	height: 100%
+	border-right: 1px solid $D60
+	@include respond-to(mobile)
+  border-right: none
+
+	& svg 
+		width: auto
+		display: block
+		align-self: center
+  
+.userProf 
+	margin: 0 18px 0 0
+	height: 30px
+	width: 30px
+	border-radius: 40em
+	background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/2619758.png')
+	background-size: cover
+
+// Grid
+.grid
+	max-width: 966px
+	width: 100%
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	position: relative
+	flex-direction: column
+	text-align: center
+	@include respond-to(mobile) 
+		max-width: 100vw
+
+// Header
+.header 
+	margin: 72px 0 36px 0
+	display: flex
+	width: 100%
+	justify-content: flex-start
+	align-items: center
+	flex-direction: column
+	text-align: center
+	@include respond-to(mobile)
+		margin: 48px 0 36px 0
+	& .grid
+		flex-direction: row
+		align-items: center
+		justify-content: center
+	& h1 
+		font-size: 36px
+		font-family: $H65
+		color: $D10
+		@include respond-to(mobile)
+			padding: 0 30px
+			line-height: 36px
+	& h2 
+		font-size: 16px
+		font-weight: 400
+		color: $D30
+	
+// Back Button
+
+.back
+	position: absolute
+	left: 0px
+	display: flex
+	align-items: center
+	height: 54px
+	top: 1px
+	width: auto
+	display: none
+	opacity: 0
+	@extend .easeFast
+	@include respond-to(mobile)
+		display: none !important
+	span
+		margin: 0 0 0 12px
+		opacity: 0
+		color: $D10
+		font-size: 12px 
+		text-transform: uppercase
+		font-family: $H65
+		letter-spacing: 0.6px
+	&:before
+		content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/backArrow.svg') 
+	&:hover
+		transform: translatex(-5px)
+		@extend .easeFast
+		cursor: pointer 
+	&:active
+		transform: translatex(-10px)
+		@extend .easeFast
+	
+.back:hover > span
+	opacity: 1
+	@extend .easeFast
+	
+// Breadcrumbs Wizard
+.breadCrumbs
+	height: 54px
+	margin: 0 0 30px 0
+	@include respond-to(mobile)
+		width: 100%
+	ul
+		display: flex
+		flex-direction: row
+		height: 100%
+		position: relative
+		@include respond-to(mobile)
+			justify-content: space-between
+		li
+			color: $D10
+			border-bottom: 2px solid rgba(#CD68ED,0)
+			@include respond-to(mobile)
+				width: 35%
+				font-size: 12px
+			&:hover
+				color: $D20 !important
+				cursor: pointer !important
+			& p 
+			color: inherit
+			font-size: 12px
+			display: flex
+			white-space: nowrap
+			align-items: center
+			padding: 0 24px
+			text-transform: uppercase
+			font-family: $H65
+			letter-spacing: 0.6px
+			position: relative
+			align-content: center
+			justify-content: center
+			@include respond-to(mobile)
+				padding: 0 6px
+				letter-spacing: 0
+			& i
+				margin: 0 9px 0 0
+				display: inline-flex
+				transform: translateX(0)
+				@extend .ease
+			& b
+				height: 14px 
+				width: 11px
+				opacity: 0
+				transform: translateX(-10px)
+				margin: 0 -8px 0 0
+				display: inline-flex
+				background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/tick.svg')
+				background-repeat: no-repeat
+				background-position: center bottom
+				@extend .ease
+
+.breadCrumbs ul span
+	@extend .easeFast
+	height: 2px
+	background: $B10
+	z-index: 991
+	position: absolute
+	bottom: 0
+	left: 0
+	
+	
+.doneCrumb
+	color: $D10 !important
+	&:hover
+		cursor: pointer !important
+		color: $D30 !important
+	& p
+		& i
+			opacity: 0
+			transform: translateX(10px) !important
+			@extend .ease
+		& b
+			opacity: 1 !important
+			transform: translateX(0) !important
+			@extend .ease
+	
+	
+// Steps Logic ---------
+.theFlow
+	display: flex
+	flex-direction: row
+	@include respond-to(mobile)
+		width: 100vw
+		padding: 0 24px
+
+.step
+	width: 594px
+	display: flex
+	flex-direction: column
+	align-items: center
+	will-change: transform, opacity
+	@include respond-to(mobile)
+		width: 100vw
+
+.card 
+	box-shadow: $card1
+	display: flex
+	padding: 30px
+	background: $D80
+	border-radius: 6px
+
+
+	
+// Step 1
+.mbCounter
+	
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: center
+	box-shadow: $card1
+	justify-content: center
+	background: $D80
+	margin: 0 0 30px 0
+	border-radius: 6px
+	height: 42px
+	h3
+		font-family: $H55
+	
+.mbCounter div
+	display: flex
+
+	input 
+		margin: 0 -1px 0 -1px
+		height: 30px
+		text-align: center
+		background: $D80
+		border: none
+		margin: auto 6px
+		border-radius: 4px
+		font-size: 20px
+		font-family: $H65
+		color: $D10
+		width: 48px
+		z-index: 9
+		-webkit-appearance: textfield
+		&:hover
+			background: $B50
+		&:focus
+			outline: none
+			border: 1px solid $B10
+			box-shadow: 0 0 0 3px #aadbfc
+	
+	
+.mbCounter span
+		height: 42px
+		width: 42px
+		display: flex
+		justify-content: center
+		align-items: center
+		background: rgba($D80,0)
+		@extend .easeFast
+		z-index: 91
+		box-shadow: $card0
+		color: $B10
+		//background: $D80
+	
+	
+.mbCounter span svg
+		stroke: currentColor
+
+.mbCounter span i
+	height: 30px
+	width: 30px
+	display: flex
+	border-radius: 4px
+	justify-content: center
+	align-items: center
+	&:hover
+		background: rgba($D80,1)
+		cursor: pointer
+		@extend .easeFast
+		background: $B50
+	&:active
+		background: $B40
+		@extend .easeFast
+		 
+#down
+	border-top-left-radius: 6px
+	border-bottom-left-radius: 6px
+	border-right: 1px solid $B30
+
+#up
+	border-top-right-radius: 6px
+	border-bottom-right-radius: 6px
+	border-left: 1px solid $B30
+
+			
+#up.noMore , #down.noMore
+	color: $D50
+	border-color: $D60 
+	&:hover
+		background: $D80
+		cursor: default
+	&:active
+
+#up.noMore i , #down.noMore i
+	&:hover
+		background: $D80
+		cursor: default
+	
+
+// Mailbox Name Input
+
+.mbName
+	display: block
+	position: relative
+	width: 100%
+	padding: 12px 30px 30px 30px
+	flex-direction: column
+	@extend .card
+	//max-height: 294px
+
+	
+.singleSeat
+	display: flex
+	flex-direction: row
+	position: relative
+	margin: 18px 0 0 0
+	will-change: margin
+	&:last-child
+	&:last-child(-1)
+		z-index: 991
+
+	input
+		height: 60px
+		z-index: 9
+		border: 1px solid $B30
+		border-top-left-radius: 6px
+		border-bottom-left-radius: 6px
+		padding: 0 48px 2px 24px
+		display: flex
+		margin: 0 -1px 0 0
+		justify-content: center
+		font-size: 20px
+		font-family: $H45
+		width: 100%
+		position: relative
+		background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/tick1.svg')
+		background-size: 0px 10px
+		background-repeat: no-repeat
+		background-position: 90% center !important
+	
+		@include respond-to(mobile)
+			font-size: 16px
+			font-family: $H55
+	
+		&::placeholder
+			color: $D40
+	
+		&:hover
+			//background: $B50 
+
+		&:focus
+			outline: none
+			border: 1px solid $B10
+			box-shadow: 0 0 0 3px #aadbfc
+	span
+		background: $D80
+		height: 60px
+		position: relative
+		//overflow: hidden
+		border: 1px solid $B30
+		border-left: 1px solid transparent
+		border-top-right-radius: 6px
+		border-bottom-right-radius: 6px
+		display: flex
+		justify-content: center
+		align-items: center
+		font-size: 20px
+		font-family: $H45
+		padding: 0 24px
+		@include respond-to(mobile)
+			font-size: 16px
+			max-width: 144px
+			overflow: hidden
+			font-family: $H55
+			&:after
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				left: 0
+				width: 48px
+				height: 100%
+				background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%)
+			&:before
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				right: 0
+				width: 48px
+				height: 100%
+				background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
+
+.singleSeat i
+	width: 30px
+	background: $D80
+	height: 30px
+	border: 1px solid $B30
+	box-shadow: 0 2px 6px 0 rgba(0,0,0,0.05), 0 10px 20px 0 rgba(0,0,0,0.05)
+	position: absolute
+	top: 0
+	bottom: 0
+	opacity: 0
+	border-radius: 30em
+	right: -15px
+	background: $D80
+	display: flex
+	will-change: opacity
+	@extend .easeFast 
+	align-items: center
+	justify-content: center
+	z-index: 991 
+	margin: auto 0
+	background:  url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/remove.svg') , $D80
+	background-repeat: no-repeat
+	background-size: 8px 8px
+	background-position: center
+	transition-delay: 0ms
+	
+	&:hover
+		@extend .easeFast
+		cursor: pointer
+		background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/removeHover.svg') , $D80
+		background-repeat: no-repeat
+		background-size: 8px 8px
+		background-position: center
+		
+	
+	&:hover:after
+
+.singleSeat:hover i 
+	@extend .easeFast
+	opacity: 1
+
+
+	
+	
+.addSeat
+	height: 60px
+	width: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	background: $B50
+	margin: 18px 0 0 0
+	border-radius: 6px
+	color: $B10
+	font-family: $H55
+	@extend .easeFastest
+	@include respond-to(mobile)
+		font-size: 14px
+	&:hover
+				background: $B40
+				cursor: pointer
+				@extend .easeFastest
+	&:active
+				background: $B30
+				@extend .easeFastest
+	
+	& svg
+		margin: 0 9px 0 0
+		
+	
+.stepNav
+	margin: 36px 0 0 0
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	width: 100%
+	align-items: center
+	@include respond-to(mobile)
+		flex-direction: row !important
+		display: none !important
+	
+	& button
+		@extend button
+	& h5 
+		font-family: $H55
+	
+	
+// Step 2 ---------
+
+#step1
+	display: none
+	div
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: flex-start
+		width: 100%
+		@include respond-to(mobile)
+			flex-direction: column
+	
+#step2
+	display: none
+	width: 966px
+	flex-direction: column
+	justify-content: space-between
+	align-items: flex-start
+	@include respond-to(mobile)
+		width: 100%
+	
+
+.row
+	display: flex
+	width: 100%
+	flex-direction: row
+	justify-content: space-between
+	align-items: flex-start
+	@include respond-to(mobile)
+		flex-direction: column
+
+
+// Step 3
+
+.--payment
+	width: 570px
+	flex-direction: column
+	will-change: transform , opacity
+	box-shadow: $card1
+	border-radius: 6px
+	overflow: hidden
+	@include respond-to(mobile)
+		width: 100%
+		margin: 0 0 30px 0
+	.--header
+		height: 72px
+		padding: 0 30px
+		display: flex
+		background: $D80
+		align-items: center
+		border-bottom: 1px solid $D60
+	
+		h3
+			font-size: 12px
+			font-family: $H65
+			color: $D20
+			margin: 5px 0 0 0
+			text-transform: uppercase
+			letter-spacing: 0.6px
+	
+	button
+			outline: 0
+			padding: 0 30px
+			height: 42px
+			align-self: flex-end
+			width: 240px
+			margin: 42px 0 0 0
+			background: $B10
+			display: flex
+			flex-direction: row
+			justify-content: center
+			align-items: center
+			vertical-align: middle
+			border: 1px solid $B10
+			border-radius: 50em
+			font-size: 16px
+			color: $D80
+			@extend .easeFast
+			&:hover
+				cursor: pointer
+				background: $B20
+				border: 1px solid $B20
+				@extend .easeFast
+			&:active
+				background: $B05
+				border: 1px solid $B05
+				@extend .easeFast
+			object
+				margin: 0 6px 0 0
+		
+	h2
+		font-size: 24px
+		font-weight: 300
+		
+.cards1
+	display: flex
+	background: white
+	
+	flex-direction: column
+	position: relative
+	
+
+.card1
+	border-bottom: 1px solid $D60
+	margin: 0 30px 
+	padding: 30px 0
+	height: 96px
+	border-radius: 0
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: center
+	margin: -1px 0 0 0
+	align-content: center
+	position: relative
+	@extend .ease
+	&:hover
+	//	box-shadow: 0 10px 30px 0 rgba(0,0,0,0.05)
+	
+	
+	
+.card1.users
+	border-top-left-radius: 6px
+	margin: 0 30px 
+	border-top-right-radius: 6px
+	
+.card1.other
+	border-bottom-left-radius: 6px
+	border-bottom-right-radius: 6px
+	border-top-left-radius: 0
+	border-top-right-radius: 0
+	border-bottom: 1px solid rgba($D60,0)
+	height: auto
+	margin: 0 30px 
+
+
+.radio 
+	z-index: 999999
+	display: flex
+	flex-direction: row
+	height: 100%
+	align-items: center
+	width: 100%
+
+input[type="radio"] 
+	background-color: $D80
+	border: 1px solid $B10
+	border-radius: 50%
+	box-shadow: inset 0 0 0 0 white
+	margin: 0 18px 0 0
+	cursor: pointer
+	font: inherit
+	position: relative
+	min-height: 20px
+	height: 20px
+	outline: none
+	width: 20px
+	min-width: 20px
+	-moz-appearance: none
+	-webkit-appearance: none
+	@extend .easeFast
+	&:after
+		opacity: 0
+		position: absolute
+		bottom: 0
+		margin: 0 auto
+		top: -4px
+		width: 18px
+		align-self: center
+		height: 20px
+		display: flex
+		justify-content: center
+		align-items: center
+		align-content: center
+		margin: auto
+		content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/icon-check.svg')
+	&:checked 
+		background-color: $B10
+		box-shadow: inset 0 0 0 4px $B10
+		@extend .easeFast
+	&:checked:after
+		opacity: 1
+	
+.card1.other
+	flex-direction: column
+
+
+
+.card1:hover 
+	@extend .easeFast
+
+.card1 span 
+	margin: 6px 0 0 0
+
+.card1:before 
+	position: absolute
+	content: ''
+
+.disclaimer 
+	margin: 42px 0 0 0
+	display: flex
+	font-size: 14px
+	line-height: 1.4
+	font-weight: 300
+	// border-top: 1px solid $D60
+
+.radio-label 
+		font-size: 16px
+		display: flex
+		flex-direction: row
+		align-items: center
+		@extend .easeFast
+		width: 100%
+		&:hover 
+			cursor: pointer
+      
+		& div 
+			display: flex
+			flex-direction: column
+      
+		& h3 
+			
+			padding: 0
+			font-size: 16px
+			color: $D10
+			font-family: $H65
+      
+
+		& p 
+			margin: 12px 0 0 0
+			padding: 0
+			height: 14px
+			font-size: 14px
+			color: $D10
+			display: inline-flex
+			align-items: center
+			font-family: $H55
+			& img
+				height: 14px
+	
+
+.users .radio .radio-label
+		& p
+			& img 
+				height: 20px
+				margin: 0 0 0 12px 
+		
+		
+.--summary 
+	opacity: 1
+	width: 366px
+	will-change: transform , opacity
+	flex-direction: column
+	background: $D80
+	position: relative
+	border-radius: 6px
+	box-shadow: $card1
+	@include respond-to(mobile)
+		width: 100%
+
+	.--header
+		height: 72px
+		padding: 0 30px
+		display: flex
+		align-items: center
+		border-bottom: 1px solid $D60
+	
+		h3
+			font-size: 12px
+			font-family: $H65
+			margin: 5px 0 0 0
+			color: $D20
+			text-transform: uppercase
+			letter-spacing: 0.6px
+	
+	button
+			outline: 0
+			height: 42px
+			width: 100%
+			background: $B10
+			margin: 30px 0 0 0
+			display: flex
+			flex-direction: row
+			justify-content: center
+			align-items: center
+			vertical-align: middle
+			border: 1px solid $B10
+			border-radius: 50em
+			font-size: 16px
+			color: $D80
+			@extend .easeFast
+			&:hover
+				cursor: pointer
+				background: $B20
+				border: 1px solid $B20
+				@extend .easeFast
+			&:active
+				background: $B05
+				border: 1px solid $B05
+				@extend .easeFast
+			img
+				margin: 0 12px 0 0
+
+	// Purchase Summary  
+
+.detPurchase 
+	padding: 30px
+	overflow: hidden
+	transform-origin: top center
+	@extend .ease
+	& span
+		margin: 18px 0 0 0
+		font-size: 14px
+		color: $D20
+		font-family: $H55
+		width: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+		@include respond-to(mobile)
+			margin: 24px 0 0 0
+		& img
+			margin: 0 9px 0 0
+		
+
+.summary 
+	margin: 0px 0 0 0
+	padding: 0
+	list-style: none
+	& h5 
+
+	& li 
+		display: flex
+		justify-content: space-between
+		font-size: 14px
+		position: relative
+		color: $D10
+		margin-bottom: 12px
+		line-height: 18px
+		font-family: $H55
+		& b 
+		
+			& small
+				text-decoration: underline
+				//font-size: 14px
+				font-family: $H55
+				&:hover
+					cursor: pointer
+		& c
+			
+		
+		&:last-child 
+			padding: 12px 0 
+			margin: 24px 0 0 0
+			border-top: 1px solid $D60
+			border-bottom: 1px solid $D60
+			font-family: $H65
+			& b , c
+				font-family: $H65
+				font-size: 16px
+		
+
+		// Purchase Form
+.form
+	width: 100%
+	height: 0
+	margin: 0
+	will-change: height
+	display: flex
+	overflow: hidden
+	flex-direction: column
+	justify-content: flex-start
+	& .singleRow
+		&:last-child
+			justify-content: flex-start
+			align-items: center
+			margin: 0
+			height: 24px
+			@include respond-to(mobile)
+				height: auto
+				flex-direction: row
+				font-size: 14px
+				font-family: $H55
+			& input
+					margin: 0 12px 0 0
+					width: auto
+		&:nth-last-child(2)
+			margin: 0 0 24px 0
+			& input
+					width: 240px 
+					@include respond-to(mobile)
+						width: 100%
+	
+		margin: 0 0 30px 0
+		display: flex
+		width: 100%
+		flex-direction: row
+		justify-content: space-between
+		@include respond-to(mobile)
+			flex-direction: column
+			align-items: flex-start
+			margin: 0 0 24px 0 
+		& input
+			&:nth-child(2)
+				margin: 0 0 0 30px
+				@include respond-to(mobile)
+					margin: 24px 0 0 0 
+			height: 36px
+			padding: 0 12px
+			display: flex
+			width: 100%
+			outline: none
+			border-radius: 6px
+			border: 1px solid $B30
+			
+		& input::placeholder
+			color: $D40
+			font-size: 14px
+			font-family: $H55
+	
+	
+	
+
+.noselect 
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+	
+.cardTitle
+	display: flex
+	width: 100%
+	flex-direction: column
+	align-items: baseline
+	padding: 0
+	margin: 0 0 24px 0
+	justify-content: space-between
+	font-family: $H65
+	
+	& h3
+		line-height: 24px
+		margin: 0 0 4px 0
+		@include respond-to(mobile)
+			font-size: 16px
+			line-height: 24px
+	& img
+		vertical-align: middle
+		margin: -1px 0 0 3px
+	& p
+		font-size: 14px
+		line-height: 18px
+		color: $D20
+		font-family: $H55
+		@include respond-to(mobile)
+			font-size: 14px 
+
+	
+	// Step 2
+
+.cycle 
+	@extend .card
+	width: 282px
+	height: 252px
+	border: 2px solid rgba($B10,0)
+	display: flex
+	flex-direction: column
+	align-items: flex-start
+	justify-content: center
+	padding: 0  0 0 42px
+	position: relative
+	@extend .easeFast
+	@include respond-to(mobile)
+		width: 100%
+		height: auto
+		padding: 30px
+		&:first-child
+			margin: 0 0 30px 0
+	&:hover
+		box-shadow: $card2 !important
+		@extend .easeFast
+		cursor: pointer
+		transform: translateY(-3px)
+	input
+		position: absolute
+		top: 30px
+		margin: 0
+		width: 24px
+		height: 24px 
+		right: 30px
+		&:after
+			width: 22px
+			top: -3px
+			content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/tickBig.svg')
+		
+	h2
+		font-size: 20px
+		margin: 0 0 30px 0
+		font-family: $H45
+	p
+		font-size: 14px
+		color: $D10
+		font-family: $H55
+	span 
+		font-size: 54px
+		font-family: $H65
+		display: flex
+		margin: 0 0px 12px 0px
+		sup
+			font-size: 16px
+			margin: 6px 3px 0 0
+			display: inline-block
+			vertical-align: top
+			font-family: $H55
+		sub 
+			font-size: 16px
+			top: 0
+			display: inline-block
+			vertical-align: top
+			font-family: $H55
+			margin: 6px 3px 0 0
+	
+
+.checked:hover
+	transform: translateY(0px)
+
+.cycle:hover > input:not(:checked) 
+	background: $B50
+
+.marketing
+	display: flex
+	width: 100%
+	flex-direction: column
+	justify-content: flex-start
+	align-items: center
+	border-top: 1px solid $D55 
+	margin: 36px 0 0 0
+	padding: 36px 0 0 0
+	@include respond-to(mobile)
+		align-items: flex-start
+	h5
+		font-size: 20px
+		font-family: $H45
+		margin: 0 0 30px 0
+		line-height: 30px
+	div
+		margin: 0 0 30px 0
+		display: flex
+		flex-direction: row
+		ul
+			display: flex
+			flex-direction: column
+			&:first-child
+				@include respond-to(mobile)
+					margin: 0 0 18px 0
+			li
+				font-size: 14px
+				font-family: $H55
+				color: $D20
+				margin: 0 0 18px 0
+				&:before
+					content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/tick.svg')
+					float: left
+					margin: 0 9px 0 0
+					
+				&:last-child
+					margin: 0
+		
+.saveBadge
+	position: absolute
+	right: -12px
+	top: 50%
+	bottom: auto
+	margin: auto 0
+	vertical-align: middle
+  display: inline-flex
+	padding: 9px 15px
+	font-size: 12px
+	margin: auto auto auto 12px
+	text-transform: uppercase
+	letter-spacing: 0.6px
+	line-height: 18px
+	color: $D80
+	font-family: $H75
+	background: #60BC57
+	box-shadow: 0 6px 24px -9px rgba(234,95,15,0.18)
+	border-radius: 4px
+	&:before  
+		content: ''
+		display: block
+		position: absolute
+		width: 0
+		top: 0
+		bottom: 0
+		margin: auto 0
+		height: 0
+		border-style: solid
+		left: -12px
+		border-color:  transparent #60BC57 transparent transparent
+		border-width: 7px
+
+// Tooltips
+
+.info
+	position: relative
+	width: 16px
+	vertical-align: middle
+	margin: -1px 0 0 6px
+	height: 16px
+	display: inline-flex
+	background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/icon-info_copy.svg')
+	&:hover
+		cursor: pointer
+
+.info i
+	@extend .easeFast
+	font-family: $H65
+	font-size: 14px
+	position: absolute
+	transform: translateY(-50%) translateX(5px)
+	margin: auto 0
+	top: 50%
+	left: 24px
+	text-align: left
+	display: none
+	z-index: 991
+	flex-direction: column
+	line-height: 18px
+	right: auto 
+	background-color: $D10
+	color: #fff	
+	padding: 18px 24px
+	width: auto
+	white-space: nowrap
+	border-radius: 6px
+	border-color:  transparent $D10 transparent transparent
+	border-style: solid
+	border-width: 6px
+	box-shadow: $card2
+	& ul
+		margin: 12px 0 0 0
+		list-style-position: inside
+		list-style-type: disc
+		& li
+			font-size: 14px
+			margin: 0 0 6px 0
+			line-height: 18px 
+			font-family: $H55
+			&:last-child
+				margin: 0
+		
+
+.info i:after 
+	content: ''
+	display: block
+	
+	transform: translateY(-50%)
+	position: absolute
+	width: 0
+	height: 0
+	top: 50%
+	border-style: solid
+	left: -18px
+	border-color:  transparent $D10 transparent transparent
+	border-width: 6px
+	
+
+		
+.legal
+	width: 100%
+	display: flex
+	flex-direction: row
+	justify-content: flex-start
+	padding: 36px 0 0 0
+	margin: 42px 0 0 0
+	border-top: 1px solid $D55
+	& p
+		font-size: 12px
+		line-height: 18px
+		color: $D20
+		font-family: $H55
+	
+	
+	// Mobile navigation 
+
+#mobileNav
+	position: fixed 
+	bottom: 30px
+	left: 0
+	right: 0
+	margin: 0 auto
+	padding: 0 60px
+	width: 100%
+	
+	& button
+		box-shadow: 0 5px 15px 0 rgba($B10,0.15);
+		height: 54px
+		width: 100%
+		&:hover
+			background: $B10
+
+#toStep3
+	@include respond-to(mobile)
+		display: none
+	
+	
+// Domain Stetting
+.bossWrapp
+	width: 100%;
+	align-items: center;
+	flex-direction: column
+
+.setDomain
+	position: absolute
+	width: 100%
+	height: 100%
+	z-index: 999999999999999991
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	background: $uber
+	& .wrapp
+		width: 360px
+		@include respond-to(mobile)
+			width: 100%
+			padding: 0 24px
+	input
+		height: 60px
+		z-index: 9
+		border: 1px solid $B30
+		border-radius: 6px
+		padding: 0 24px 2px 24px
+		display: flex
+		margin: 0 0px 36px 0
+		justify-content: center
+		font-size: 20px
+		font-family: $H45
+		width: 100%
+		background: $D80
+		position: relative
+	
+		@include respond-to(mobile)
+			font-size: 16px
+			font-family: $H55
+	
+		&::placeholder
+			color: $D40
+	
+		&:hover
+			background: $B50 
+
+		&:focus
+			outline: none
+			border: 1px solid $B10
+			box-shadow: 0 0 0 3px #aadbfc
+	& h2
+		font-size: 30px
+		font-family: $H75
+		line-height: 36px
+		color: $D10
+		margin: 0 0 24px 0
+	

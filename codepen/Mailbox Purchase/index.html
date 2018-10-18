@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mailbox Purchase Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="https://codepen.io/igorsheg/pen/OQeLvV.css" />
+    <link rel="stylesheet" href="css/app.processed.css">
+</head>
+
+<body>
+
+
+    <div class="setDomain">
+        <div class="wrapp">
+
+            <h2>Set a domain for the purpose of this flow</h2>
+            <input value="" autofocus id="domainInput" type="text" placeholder="yourdomainname.com">
+            <button onclick="setInitDomain();" id="startFlow">Start Flow</button>
+
+        </div>
+
+    </div>
+
+    <div class="bossWrapp">
+
+        <!-- Navigation -->
+        <nav>
+            <div class="logo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/wixLogo2.svg" type="image/svg+xml">
+                </img></div>
+            <!-- <div class="userProf"></div> -->
+        </nav><!-- navigation - End -->
+
+
+
+        <!-- Header -->
+        <div class="header ">
+            <div class="grid">
+
+                <!-- Back Button -->
+                <object onclick="navigateBack();" class="back"><span>Plans</span></object>
+
+                <!-- Breadcrumbs Wizards -->
+                <div class="breadCrumbs">
+                    <ul>
+                        <span></span>
+                        <li>
+                            <p><b></b><i>1.</i>Mailboxes</p>
+                        </li>
+                        <li>
+                            <p><b></b><i>2.</i>Subscription</p>
+                        </li>
+                        <li>
+                            <p><b></b><i>3.</i>Checkout</p>
+                        </li>
+
+
+
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- Dynamic Title -->
+            <h1>How Many Mailboxes Do You Want?</h1>
+
+        </div><!-- Header - End -->
+
+
+        <!-- The Flow -->
+        <div class="theFlow">
+
+            <!-- Step 1 -->
+            <div id="step0" class="step ">
+
+
+                <!-- Counter -->
+                <div class="mbCounter">
+
+                    <div>
+
+                        <span id="down" class="noMore" onclick="updateSpinner(this);">
+
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2">
+                                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10,15 L20,15"
+                                        transform="translate(-9 -14)" />
+                                </svg>
+                            </i>
+
+                        </span>
+                        <input id="content" value="1" type="text" />
+                        <span id="up" onclick="updateSpinner(this);">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                                    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" transform="translate(1 1)">
+                                        <path d="M5 0L5 10M0 5L10 5" />
+                                    </g>
+                                </svg>
+                            </i>
+                        </span>
+
+                    </div>
+                </div><!-- /Counter -->
+
+
+
+                <div class="cardTitle noselect">
+                    <h3>Add the email addresses that you need<label class="info"> <i>Add email addresses for everyone
+                                <br> on your team, like: <ul>
+                                    <li>yourname@mystunningwebsite.com</li>
+                                    <li>sales@mystunningwebsite.com</li>
+                                    <li>info@mystunningwebsite.com</li>
+                                </ul></i> </label> </h3>
+                    <p>You can change your email addresses later, when you set up your Mailboxes. <a onclick="navigateNext()"
+                            href="javascript:void(0)">Skip for now</a></p>
+                </div>
+                <div class="mbName">
+                    <label class="singleSeat">
+
+                        <input type="text" placeholder="e.g. yourname">
+                        <span>@yourdomain.com</span>
+                    </label>
+
+                    <div id="bigUp" onclick="updateSpinner(this);" class="addSeat noselect">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                            <g fill="none" fill-rule="evenodd" stroke="#3899EC" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" transform="translate(1 1)">
+                                <path d="M5 0L5 10M0 5L10 5" />
+                            </g>
+                        </svg>Add a Mailbox
+                    </div>
+                </div>
+
+
+
+                <!-- Step Navigator -->
+                <div class="stepNav">
+                    <h5></h5>
+                </div>
+
+
+
+
+            </div><!-- /Step 1 -->
+
+
+
+
+
+
+            <div id="step1" class="step">
+                <div>
+
+
+                    <label for="monthly" class="stepCard cycle monthly">
+                        <input onclick="checkChecked()" name="cycles" type="radio" id="monthly">
+                        <h2>Monthly</h2>
+                        <span><sup>$</sup>5<sub>.00</sub></span>
+                        <p>per Mailbox / month </p>
+                    </label>
+
+                    <label for="yearly" class="stepCard cycle monthly">
+
+                        <input onclick="checkChecked()" checked name="cycles" type="radio" id="yearly">
+                        <h2>Yearly</h2>
+                        <span><sup>$</sup>4<sub>.16</sub> <object class="saveBadge">Save $10</object></span>
+                        <p>per Mailbox x 12 months</p>
+                    </label>
+
+                </div>
+
+
+                <!-- Step Navigator -->
+                <div class="stepNav">
+                    <h5></h5>
+                </div>
+
+
+                <section class="marketing">
+                    <h5>Every Mailbox includes a full package of G Suite business apps</h5>
+
+
+                    <div>
+                        <ul>
+                            <li>Customized email address using your domain</li>
+                            <li>Accessible on mobile and desktop devices</li>
+                            <li>Online video meetings and messaging</li>
+                        </ul>
+                        <ul>
+                            <li>Collaborative Calendar, Docs & Sheets </li>
+                            <li>30GB Inbox & Drive storage</li>
+                            <li>Security and administration controls</li>
+                        </ul>
+                    </div>
+
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/gSuite.svg" alt="G Suite By Google Cloud">
+                </section>
+
+
+
+            </div><!-- /Step 1  -->
+
+            <div id="step2" class="step">
+                <div class="row">
+                    <!-- Payment -->
+                    <div class="--payment stepCard">
+                        <div class="--header">
+                            <h3>Payment Method</h3>
+                        </div>
+                        <div class="cards1">
+                            <div class="card1 users">
+                                <div class="radio">
+                                    <input onclick="paymentCheck()" name="radios2" checked type="radio" id="saved--radio">
+                                    <label for="radio_2" class="radio-label">
+                                        <div>
+                                            <h3>My saved card</h3>
+                                            <p>XXXX-2222 Wix Wix <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/payment-visa.svg"
+                                                    type=""></object></p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="card1 other">
+                                <div class="radio">
+                                    <input onclick="paymentCheck()" name="radios2" type="radio" id="other--radio">
+                                    <label for="radio_2" class="radio-label">
+                                        <div>
+                                            <h3>Use other card</h3>
+                                            <p> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/icons-cards.svg"
+                                                    type=""></img></p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <!-- Purchase Form -->
+                                <div class="form">
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input class="form-textfield" name="ccNumber" type="text" id="ccNumber"
+                                            placeholder="Card Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Card Number'"
+                                            autocomplete="off">
+
+                                        <input name="cardTypeOrdinal" placeholder="Visa" class="selectBox-label form-half-row-width"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input class="form-textfield" name="ccNumber" type="text" id="ccNumber"
+                                            placeholder="Card Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Card Number'"
+                                            autocomplete="off">
+
+                                        <input name="cardTypeOrdinal" placeholder="Security Code" class="selectBox-label form-half-row-width"
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Security Code'"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input class="form-textfield" name="ccNumber" type="text" id="ccNumber"
+                                            placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'"
+                                            autocomplete="off">
+
+                                        <input name="cardTypeOrdinal" placeholder="Last Name" class="selectBox-label form-half-row-width"
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input class="form-textfield" name="ccNumber" type="text" id="ccNumber"
+                                            placeholder="Phone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone'"
+                                            autocomplete="off">
+
+                                        <input name="cardTypeOrdinal" placeholder="Company Name" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Company Name'" class="selectBox-label form-half-row-width"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input name="cardTypeOrdinal" placeholder="Address" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Address'" class="selectBox-label form-half-row-width"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input class="form-textfield" name="ccNumber" type="text" id="ccNumber"
+                                            placeholder="City" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'"
+                                            autocomplete="off">
+
+                                        <input name="cardTypeOrdinal" placeholder="Postal Code" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Postal Code'" class="selectBox-label form-half-row-width"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input name="cardTypeOrdinal" placeholder="Israel" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Israel'" class="selectBox-label form-half-row-width"
+                                            tabindex="0">
+
+                                    </div>
+
+                                    <!--  Single Row -->
+                                    <div class="singleRow">
+                                        <input id="checkBox" checked type="checkbox">
+                                        <label for="">Save my credit card information for other purchases</label>
+                                    </div>
+
+                                </div>
+                                <!-- Purchase Form - End -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Payment - End -->
+
+                    <!-- Purchase Summary -->
+
+                    <div class="--summary stepCard">
+
+                        <div class="--header">
+                            <h3>Summary</h3>
+                        </div>
+
+                        <!-- Details Pruchase  -->
+                        <div class="detPurchase">
+                            <ul class="summary">
+                                <li class="sProduct"><b></b>
+                                    <c></c>
+                                </li>
+                                <li><b><small>Enter promo code</small></b>
+                                    <c></c>
+                                </li>
+                                <li class="sSubtotal"><b>Subtotal</b>
+                                    <c>$ 28.56</c>
+                                </li>
+                                <li class="sVat"><b>VAT (17.00%)</b>
+                                    <c>$ 28.56</c>
+                                </li>
+                                <li class="sTotal"><b>Total</b>
+                                    <c>$ 196.56</c>
+                                </li>
+                            </ul>
+                            <button id="toStep3"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/Lock.svg"
+                                    type="image/svg+xml"></img>Submit Purchase</button>
+                            <span><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/270939/icon-sslSmall.svg" type="image/svg+xml"></img>Safe
+                                & Secure Payment</span>
+                        </div>
+                        <!-- Details Pruchase - End -->
+
+                    </div>
+                </div> <!-- Flex Row -->
+                <div class="legal">
+                    <p>To ensure uninterrupted service, your subscription will automatically renew for US$57.33 on Jun
+                        8, 2019. You may disable auto-renewal or cancel your subscription at any time through your
+                        account; and we'll send you a reminder by email before you're charged.
+                        By clicking Submit Purchase, you agree to our <a href="javascript:void(0)">Customer Agreement</a>
+                        and <a href="javascript:void(0)">Privacy Policy</a>.
+                        <br><br>
+                        Your payment will be processed by Wix.com Inc., 500 Terry A. Francois Blvd., San Francisco, CA
+                        94158, USA</p>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <!--/The Flow -->
+
+    </div><!-- Boss Wrapp -->
+
+
+    <!-- Sripts -->
+    <script src="js/app.js"></script>
+</body>
+
+<!-- 
+    https://codepen.io/igorsheg/project/editor/XNxbwj
+-->
+</html>
